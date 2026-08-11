@@ -1812,20 +1812,20 @@ script = ExtResource("1_e3r4w")
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 0)
 
 [node name="root" type="Node3D" parent="character-ghost" unique_id=1394611159]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.023739971, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0051999954, 0)
 
 [node name="torso" type="MeshInstance3D" parent="character-ghost/root" unique_id=491062733]
-transform = Transform3D(0.99228436, 0, 0.12398232, 0, 1, 0, -0.12398232, 0, 0.99228436, 0, 0.223184, -7.219114e-16)
+transform = Transform3D(0.99868107, 0, -0.051341858, 0, 1, 0, 0.051341858, 0, 0.99868107, 0, 0.223184, -7.219114e-16)
 mesh = SubResource("ArrayMesh_jk68u")
 skeleton = NodePath("")
 
 [node name="arm-right" type="MeshInstance3D" parent="character-ghost/root/torso" unique_id=248275582]
-transform = Transform3D(0.7994677, -0.4776352, -0.36430225, 0.5114033, 0.8593297, -0.004380159, 0.31514785, -0.18280359, 0.9312705, -0.125, 0.15, 0.0024999976)
+transform = Transform3D(0.73009485, -0.66588503, 0.15348822, 0.6737956, 0.73891747, 0.00064770505, -0.11384642, 0.102946796, 0.98815024, -0.125, 0.15, 0.0024999976)
 mesh = SubResource("ArrayMesh_esoxk")
 skeleton = NodePath("")
 
 [node name="arm-left" type="MeshInstance3D" parent="character-ghost/root/torso" unique_id=1146214424]
-transform = Transform3D(0.7994677, 0.4776352, -0.36430225, -0.5114033, 0.8593297, 0.004380159, 0.31514785, 0.18280359, 0.9312705, 0.125, 0.15, 0.0024999976)
+transform = Transform3D(0.73009485, 0.66588503, 0.15348822, -0.6737956, 0.73891747, -0.00064770505, -0.11384642, -0.102946796, 0.98815024, 0.125, 0.15, 0.0024999976)
 mesh = SubResource("ArrayMesh_oh8rc")
 skeleton = NodePath("")
 

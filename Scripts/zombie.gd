@@ -44,11 +44,18 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 
-func _target_in_range():
-	return global_position.distance_to(player.global_position) < attack_range
+func _target_in_range(extra_range:= 0.0):
+	var offset = player.global_position - global_position
+	
+	var horizontal_distance = Vector2(offset.x, offset.z).length()
+	var vertical_distance = abs(offset.y)
+	
+	return horizontal_distance < attack_range + extra_range and vertical_distance < 4.0
+	
+	#return global_position.distance_to(player.global_position) < attack_range
 
 func _hit_finished():
-	if global_position.distance_to(player.global_position) < attack_range + 1.0 :
+	if _target_in_range(1.0):
 		var dir = global_position.direction_to(player.global_position)
 		dir.y = clamp(dir.y, 0.0, 0.4)
 		player.hit(dir)

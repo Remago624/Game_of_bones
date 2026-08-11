@@ -41,6 +41,8 @@
 [ext_resource type="PackedScene" uid="uid://cmnupmpb5yaty" path="res://Building Models/graveyard/pine-crooked.glb" id="38_m74xu"]
 [ext_resource type="PackedScene" uid="uid://ca3d0ogokpgpv" path="res://Building Models/graveyard/pine.glb" id="39_giqbd"]
 [ext_resource type="PackedScene" uid="uid://bs4fua12copqb" path="res://Building Models/graveyard/lightpost-single.glb" id="41_biww5"]
+[ext_resource type="PackedScene" uid="uid://b60ltam6cn4ip" path="res://Building Models/graveyard/rocks-tall.glb" id="42_gtmlj"]
+[ext_resource type="PackedScene" uid="uid://bq2go8sysavy1" path="res://Building Models/graveyard/rocks.glb" id="43_0fr88"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_n6joo"]
 points = PackedVector3Array(0.675, 0, 0.65006185, 0.6109093, 1, 0.5250658, 0.6554424, 0.2999217, 0.6355337, 0.5938625, 1, 0.6189499, 0.62491673, 0, 0.70008767, 0.675, 0, -0.6501989, 0.6109093, 1, -0.5252028, 0.49990696, 1, 0.63594496, 0.6103807, 0.2999217, 0.68048847, -0.62504894, 0, 0.70008767, 0.62491673, 0, -0.70008767, 0.5938625, 1, -0.6190869, 0.6554424, 0.2999217, -0.63567084, -0.50003916, 1, 0.63594496, -0.675, 0, 0.65006185, -0.6105129, 0.2999217, 0.68048847, -0.59399474, 1, 0.6189499, 0.6103807, 0.2999217, -0.68062556, -0.62504894, 0, -0.70008767, 0.49990696, 1, -0.636082, -0.6555746, 0.2999217, 0.6355337, -0.61104155, 1, 0.5250658, -0.675, 0, -0.6501989, -0.59399474, 1, -0.6190869, -0.6105129, 0.2999217, -0.68062556, -0.50003916, 1, -0.636082, -0.61104155, 1, -0.5252028, -0.6555746, 0.2999217, -0.63567084)
@@ -108,7 +110,7 @@ cull_mode = 2
 albedo_texture = ExtResource("23_we1d5")
 metadata/_gltf_primary_texture_coord = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_qvtck"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_1xwam"]
 _surfaces = [{
 "aabb": AABB(-0.5, 0, -0.5, 1, 0.725, 0.19999999),
 "format": 34896613377,
@@ -140,7 +142,7 @@ _surfaces = [{
 "vertex_data": PackedByteArray("CguSa5MesdCaP556mSCx0Jo/nnpl37HQCguSa2vhsdBae+WfniUHxWWmNMI9KrXOZaY0wsHVtc5ae+WfYNoHxQAAnkaZGf+/CguSa5MeNsYKC5Jra+E2xgAAnkZl5v+///80wsHVgoH//55GZeaCgQAAnkZl5oKBmj+eemXfgoEKC5Jra+GCgVp75Z9g2oKBZaY0wsHVgoH//zTCPSr/v///nkaZGf+///+eRmXm/7///zTCwdX/v5o/nnqZIMDFWnvln54lj9Bae+WfYNqP0Jo/nnpl38DF//+eRpkZ/////zTCPSr//wAAnkaZGf//mj+eepkg//8KC5Jrkx7//1p75Z+eJf//ZaY0wj0q//9lpjTCwdX/r///NMLB1f+v//80wj0q/8///0TJW+//n2WmRMlb7/+fZaY0wj0q/89lpkTJoxD/////RMmjEP//ZaYb8AAA//9lpkTJoxD/////RMmjEP////8b8AAA/////xvw///KhP//RMlb78qEZaZEyVvvyoRlphvw///KhP//G/AAAP//ZaYb8P///59lphvwAAD/////G/D///+fZaYb8AAA/79lpjTCPSr/v2WmRMmjEP+/ZaYb8P///79lpjTCwdX/v2WmRMlb7/+///9EyaMQ/7///zTCPSr/v///G/AAAP+///80wsHV/7///xvw////v///RMlb7/+/AAAAAP///7///wAA////v///AAAAAP+/AAAAAAAA/78AAJ5GmRn/////nkaZGf////8AAP//AIAAAAAA//8AgP//AAAAAP//AAAAAAAA/////wAAAAD/v///AAD///+///+eRpkZ/78AAAAA////vwAAAAAAAP+/AACeRpkZ/7/8mxu59yNP/LujpMZTSGjb55akxoF3qaimnhu53ZtVkXWK5Zhyli3EO27lmHKWLcSphTmmcpYtxAdzOaZyli3EoCrDcMIqT/yvNFaC+llo2wYkVoJAl6moFS7DcHjGVZH//55GZeb/////jj8AAP//AACeRmXm//8AAI4/AAD//wAAjj////+P//+OP////4///44/AAD/v///nkZl5v+///+OP////78AAI4/AAD/vwAAnkZl5v+/AACOP////78/id21lChMyT+J3bVq10zJ/VBlk+8jjMr9UGWTD9yMyj+J3bWUKEzJP4ndtWrXTMkAAM5clhyKwQAAzlxo44rBAADOXGjjgoH9UGWTD9yCgT+J3bVq14KB/VBlk+8jjMr9UGWTD9yMygAAzlyWHIrBAADOXGjjisEAAM5clhz///1QZZPvI///P4ndtZQo//+Zkxu5qIPG0qaeG7ndm8bSXqgbuR94xtIJpxu5LDzG0kSSG7m1R8bS/JsbufcjxtKcpKTG5G/61zKepMZ7h/rX55akxoF3+te7o6TGU0j61waWpMbwT/rXcJykxlk4+tcJpxu5LDxo23CcpMZZOE/8nKSkxuRv+bBeqBu5H3j5sDKepMZ7h1WR/Jsbufcj2fpwnKTGWTjZ+gaWpMbwT6LSRJIbubVHotIynqTGe4fykKaeG7ndm/KQmZMbuaiDqai7o6TGU0j02QmnG7ksPPTZXqgbuR94XrKcpKTG5G9esueWpMaBdwSqmZMbuaiDBKpEkhu5tUcv0QaWpMbwTy/RZ4PlmJDT/791iuWYcpb/v2eD5ZhUWf+/SXXlmFRZ/79JdeWYkNP/vztu5Zhylv+/AIE5phtu//+phTmmcpb//wCBOabIvv//sHc5phtu//+wdzmmyL7//wdzOaZylv//SXXlmFRZj+mwdzmmG26P6QCBOaYbbo/pZ4PlmFRZj+k7buWYcpa8wAdzOaZylrzAsHc5psi+j55JdeWYkNOPngCBOabIvo+eqYU5pnKWvMB1iuWYcpa8wGeD5ZiQ04+esHc5phtuGe1JdeWYVFkZ7WeD5ZhUWRntAIE5phtuGe0AgTmmyL7ym2eD5ZiQ0/KbSXXlmJDT8puwdzmmyL7ym7wfw3AIp8bSFS7DcHjGxtK0OsNwDZjG0vk4w3AySsbSAR7DcC1ZxtKgKsNwwirG0tM1VoJdjfrXfy1WggCs+tcGJFaCQJf61680VoL6WfrX4iJWgt5j+tc2K1aCO0X61/k4w3AySmjbNitWgjtFT/zTNVaCXY35sLQ6w3ANmPmwfy1WggCsVZGgKsNwwirZ+jYrVoI7Rdn64iJWgt5jotIBHsNwLVmi0n8tVoIArPKQFS7DcHjG8pC8H8NwCKepqK80VoL6WfTZ+TjDcDJK9Nm0OsNwDZhestM1VoJdjV6yBiRWgkCXBKq8H8NwCKcEqgEew3AtWS/R4iJWgt5jL9Flpiv3mRn/////K/eZGf////////9///9lpv///3///2WmNMI9Kv////80wj0q/////zTCwdX/r2WmNMLB1f+v//8r92Xm06llpiv3ZebTqWWmK/eZGf////8r95kZ//9lpiv3mRn/v2Wm////f/+/ZaYr92Xm/7///yv3mRn/v///////f/+///8r92Xm/79lpv///3//v///////f/+///8r92Xm06llpiv3ZebTqf//nkZl5v+vAACeRmXm/68AAJ5GmRn/////nkaZGf////+OP////48AAI4/////jwAAjj8AAP////+OPwAA//+jp7awo6e2sKOntrCjp7awbJslySympbMspqWzbJslyf9///9WnVDFVp1Qxf9///////9/////f////3////9/////f////3////9//38AAP9/AAD/fwAA/38AAKCcvMaLp+awi6fmsKCcvMb/f6n9/3+p/f9/qf3/f6n9/3+p/f9/qf3/f6n9AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/fKX//3yl//8dh///HYf//x2H//8dh///AAD/fwAA/38AAP9/AAD/f/9/gdr///9//3+B2v///3//f////3////9/////f////3////9/////fwAA/38AAP9/AAD/fwAA/38AAP9/AAAAAP9/AAD/fwAA/38AAP9//3+6zP9/usz/f////3////9/////f////38AAP9/AAD/fwAA/3////9/////f///bnxu59ybkQXhpObRIeZmT0Oo7Avsi7vXQ6jsC+yLu9dufG7n3JuRBeGk5tEh5mZP/39Es/9/wur/f0Sz/3/C6v///3////9//38AAP9/AAD/fwAA/3////9/////f///QaF6vUGher2NouO6jaLjukGher1BoXq9MJKd2zCSndv///9/////f////3+NouO6jaLjujCSndswkp3b/3+p/f9/qf3/f6n9Dyke0g8pHtIPKR7SDyke0g8pHtIPKR7SyNOSJ8jTkifI05InyNOSJ8jTkifI05In3JuRBW58bucaqrUeGqq1HiHmZk/Jhf7lyYX+5UeIZ+FHiGfhmNsma5jbJmvhpObReZ9CDnmfQg4GrKMVBqyjFRCbgc4Qm4HO3JDW3tyQ1t4AAP9/AAD/fwAA/38AAP9/AAD/fwAA/3//f/+//3//v/9//7//f/+//3//v/9//7/mjnHd5o5x3Yyi5w6MoucOOJ171jide9aoqH64qKh+uIDHqCiDqTgdg6k4HYDHqCjEfB7jxHwe4x9jOwMfYzsD2r2mRdq9pkWlxSTCpcUkwg8pHtIPKR7SDyke0g8pHtIPKR7SDyke0sjTkifI05InyNOSJ8jTkifI05InyNOSJ9ybkQVufG7nGqq1HhqqtR4h5mZPyYX+5cmF/uVHiGfhR4hn4ZjbJmuY2yZr4aTm0XmfQg55n0IOBqyjFQasoxUQm4HOEJuBztyQ1t7ckNbe/3/a0f9/2tH/f/+//3//v0Sz//9Es///AAD/fwAA/3////9/////f/9/2tH/f9rR/3////9/////f////38AAP9/AAD/fwAA////f////3////9/////f////3////9//3+6zP9/usz///9/////f/9/wur/f8Lq")
 }]
 blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_qvtck")
+shadow_mesh = SubResource("ArrayMesh_1xwam")
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_nykkv"]
 points = PackedVector3Array(0.5, 0.7249291, -0.4000196, 0.5, 0.69994867, -0.48001176, 0.14996088, 0.7249291, -0.4000196, 0.5, 0.69994867, -0.32000783, 0.5, 0.67993593, -0.5, 0.14996088, 0.69994867, -0.48001176, 0.14996088, 0.69994867, -0.32000783, -0.4569303, 0.30459085, -0.47611588, -0.4569303, 0.30459085, -0.32390368, 0.5, 0.67993593, -0.30001956, 0.5, 0, -0.5, 0.14996088, 0.67993593, -0.5, 0.14996088, 0.67993593, -0.30001956, -0.5, 0.1799726, -0.5, -0.5, 0.26279122, -0.47768205, -0.5, 0.26279122, -0.3223375, -0.5, 0.1799726, -0.30001956, 0.5, 0, -0.30001956, -0.5, 0, -0.5, -0.5, 0, -0.30001956)
@@ -211,6 +213,12 @@ albedo_color = Color(1, 0.77952754, 0.26771653, 1)
 emission_enabled = true
 emission = Color(1, 0.78039217, 0.26666668, 1)
 emission_energy_multiplier = 6.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gtmlj"]
+size = Vector3(1.0331388, 0.5875922, 1.0201397)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0fr88"]
+size = Vector3(1.0758798, 0.37745833, 0.96442044)
 
 [node name="Node3D" type="Node3D" unique_id=1889090860]
 
@@ -489,6 +497,24 @@ light_energy = 5.0
 light_volumetric_fog_energy = 0.0
 light_specular = 2.0
 
+[node name="rocks-tall2" parent="." unique_id=2145230513 instance=ExtResource("42_gtmlj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 9)
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="rocks-tall2" unique_id=890100650]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.006123543, 0.2937961, -0.054722726)
+shape = SubResource("BoxShape3D_gtmlj")
+
+[node name="rocks2" parent="." unique_id=1679913989 instance=ExtResource("43_0fr88")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 9)
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="rocks2" unique_id=1666304284]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1026566, 0.18872917, 0.051184475)
+shape = SubResource("BoxShape3D_0fr88")
+
 [editable path="crypt-small"]
 [editable path="crypt-small/crypt-small-roof2"]
 [editable path="crypt-small/crypt-door2"]
@@ -528,3 +554,5 @@ light_specular = 2.0
 [editable path="pine-crooked2"]
 [editable path="pine2"]
 [editable path="lightpost-single2"]
+[editable path="rocks-tall2"]
+[editable path="rocks2"]

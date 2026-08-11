@@ -10,3 +10,6 @@ Gun model by Quaternius:
 https://poly.pizza/m/K2lXTYFSLC
 
 ground texture by Charlotte Baglioni: https://polyhaven.com/a/forest_ground_06
+
+KayKit Halloween Bits
+Created by Kay Lousberg: https://kaylousberg.itch.io/halloween-bits

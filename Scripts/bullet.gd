@@ -1,7 +1,7 @@
 extends Node3D
 
 
-const velocity = 40.0
+const velocity = 80.0
 @onready var mesh = $MeshInstance3D
 @onready var ray = $RayCast3D
 @onready var particles = $GPUParticles3D
@@ -34,7 +34,7 @@ func _process(delta: float) -> void:
 	query.exclude = [self]
 	query.collide_with_areas = true
 	query.collide_with_bodies = true
-	query.collision_mask = 1 << 1
+	query.collision_mask = 2 | 8
 	
 	var result = space_state.intersect_ray(query)
 	var collider = result.get("collider")
