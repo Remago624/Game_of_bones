@@ -13,6 +13,7 @@ var enemies_inside = []
 var zombie_count = 0
 var ghost_count = 0
 var timer_state = false
+signal thriller
 @onready var timer = $Area3D/Timer
 @onready var txt = $TextEdit
 @onready var txt2 = $TextEdit2
@@ -31,12 +32,13 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	enemies_inside = enemies_inside.filter(is_instance_valid)
 	if enemies_inside.size() > 0 and timer_state == false and player_inside == true:
-		print("get lost")
+		#print("get lost")
 		timer_state = true
 		timer.start()
+		$Area3D/Timer2.start()
 		txt.visible = true
 	elif player_inside == false:
-		print("nice")
+		#print("nice")
 		timer_state = false
 		
 		txt.visible = false
@@ -109,7 +111,7 @@ func _on_area_3d_body_exited(body: Node3D) -> void:
 
 
 func _on_timer_timeout() -> void:
-	print("5awal, etla3 barrah")
+	#print("5awal, etla3 barrah")
 	txt.visible = false
 	txt2.visible = true
 	nav_link.enabled = true
@@ -117,3 +119,15 @@ func _on_timer_timeout() -> void:
 		zombie.new_agent.path_desired_distance = 2.0
 	for ghost in get_tree().get_nodes_in_group("ghost"):
 			ghost.new_agent.path_desired_distance = 2.0
+
+
+func _on_timer_2_timeout() -> void:
+	txt.visible = false
+	txt2.visible = false
+	$TextEdit3.visible = true
+	player.global_transform = $NavigationRegion3D/Node3D/Node3D.global_transform
+	
+	$NavigationRegion3D/zombie.global_transform = $NavigationRegion3D/Node3D/Node3D3.global_transform
+	$NavigationRegion3D/zombie2.global_transform = $NavigationRegion3D/Node3D/Node3D2.global_transform
+	$NavigationRegion3D/zombie3.global_transform = $NavigationRegion3D/Node3D/Node3D4.global_transform
+	emit_signal("thriller")

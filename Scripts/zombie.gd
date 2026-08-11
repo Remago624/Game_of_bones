@@ -80,3 +80,29 @@ func _on_area_3d_body_part_hit(dam: Variant) -> void:
 		await get_tree().create_timer(2.2).timeout
 		queue_free()
 		
+
+
+func _on_world_thriller() -> void:
+	#print("THRILLER SIGNAL RECEIVED")
+	#print("Has animation: ", anim_player2.has_animation("thriller"))
+
+	#anim_player2.play("thriller")
+
+	#print("Playing: ", anim_player2.is_playing())
+	#print("Current: ", anim_player2.current_animation)
+	#print("Length: ", anim_player2.current_animation_length)
+
+	#await get_tree().create_timer(2.0).timeout
+
+	#print("After 2 sec - Playing: ", anim_player2.is_playing())
+	#print("Position: ", anim_player2.current_animation_position)
+	health = 99999999
+	set_physics_process(false)
+	anim_tree.active = false
+	anim_player2.play("thriller")
+	await get_tree().create_timer(18.8667).timeout
+	anim_player2.play("thriller", -1.0, -4.0, true)
+	await get_tree().create_timer(4.716675).timeout
+	anim_tree.set("parameters/conditions/thriller", true)
+	anim_tree.active = true
+	set_physics_process(true)
