@@ -24,8 +24,11 @@ var player_inside = false
 func _ready() -> void:
 	nav_link.enabled = false
 	randomize()
+	await get_tree().create_timer(3.0).timeout
 	$"NavigationRegion3D/crypt-small/crypt-door2/AnimationPlayer".play("open")
 	$"NavigationRegion3D/crypt-large/crypt-large-door2/AnimationPlayer".play("open")
+	$"NavigationRegion3D/crypt-small2/crypt-door2/AnimationPlayer".play("open")
+	$"NavigationRegion3D/crypt-small3/crypt-door2/AnimationPlayer".play("open")
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -49,6 +52,7 @@ func _process(delta: float) -> void:
 			zombie.new_agent.path_desired_distance = 1.0
 		for ghost in get_tree().get_nodes_in_group("ghost"):
 			ghost.new_agent.path_desired_distance = 1.0
+
 
 func _on_player_player_hit() -> void:
 	hit_rect.visible = true

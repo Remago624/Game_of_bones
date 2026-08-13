@@ -7,8 +7,10 @@ const maya3a_speed = 3.0
 var JUMP_VELOCITY = 4.5
 const crouchJ_change = 1.0
 const crouchV_change = 0.3
+@onready var P = $"."
 @onready var rot := $Node3D
 @onready var camera = $Node3D/Camera3D
+@onready var TopDownCamera = $TopDownCamera
 const FOV = 70.0
 const FOV_change = 1.5
 const bob_freq = 2.0
@@ -42,13 +44,31 @@ var spread = 0.067
 signal player_died
 
 @onready var healthbar = $"../../HealthBar"
+var cameraV = false
+var mouse_position := Vector3.ZERO
+const ray_length = 1000
+@onready var mr = rot
 
 func _ready():
 	randomize()
 	healthbar.init_health(health)
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event is InputEventMouseButton:
+	if event.is_action_pressed("camera") and !cameraV:
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		camera.clear_current()
+		TopDownCamera.make_current()
+		cameraV = true
+		mr = P
+		camera.rotation.x = 0
+	elif event.is_action_pressed("camera") and cameraV:
+		cameraV = false
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		TopDownCamera.clear_current()
+		camera.make_current()
+	
+	
+	if event is InputEventMouseButton and !cameraV:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	elif event.is_action_pressed("ui_cancel"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
@@ -60,7 +80,16 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func _physics_process(delta: float) -> void:
-	# Add the gravity.
+	var directionP = mouse_position - rot.global_position
+	directionP.y = 0
+	var angle = atan2(-directionP.x, -directionP.z)
+	if cameraV:
+		_mouse_position()
+		rot.rotation.y = angle
+	else:
+		mr = rot
+	
+	
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 	
@@ -69,7 +98,7 @@ func _physics_process(delta: float) -> void:
 		velocity.y = JUMP_VELOCITY
 		
 	var input_dir := Input.get_vector("Left", "Right", "Forward", "Backward")
-	var direction = ($Node3D.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	var direction = (mr.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	
 	#walk and sprint
 	if Input.is_action_pressed("sprint"):
@@ -114,6 +143,8 @@ func _physics_process(delta: float) -> void:
 	if Input.is_key_label_pressed(KEY_G):
 		health += 1
 		healthbar.health = health
+	
+	
 	move_and_slide()
 
 
@@ -194,3 +225,14 @@ func _crouch():
 		node3d.global_position.y += crouchV_change
 		JUMP_VELOCITY += crouchJ_change
 		
+func _mouse_position():
+	var mouse_screen_position = get_viewport().get_mouse_position()
+	var space_state = get_world_3d().direct_space_state
+	var from = TopDownCamera.project_ray_origin(mouse_screen_position)
+	var to = from + TopDownCamera.project_ray_normal(mouse_screen_position) * ray_length
+	var query = PhysicsRayQueryParameters3D.create(from, to)
+	query.exclude = [self]
+	var result = space_state.intersect_ray(query)
+	if result:
+		mouse_position = result.position
+		print(result.position)
