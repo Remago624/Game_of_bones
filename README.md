@@ -32,6 +32,10 @@ Blender was used to convert animations formats to gltf
 ### Main menu
 ![alt text](<Screenshot (804).png>) ![alt text](<Screenshot (805).png>)
 
+## How to play
+Download the game from: https://remago624.itch.io/game-of-bones
+
+Extract the ZIP and run the game's `.exe`.
 
 Zombie character and its animations provided by Adobe Mixamo:
 https://www.mixamo.com/
