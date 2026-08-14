@@ -43,13 +43,24 @@ var spread = 0.067
 
 signal player_died
 
+@onready var audio_player = $AudioStreamPlayer3D
 @onready var healthbar = $"../../HealthBar"
 var cameraV = false
 var mouse_position := Vector3.ZERO
 const ray_length = 1000
 @onready var mr = rot
 
+@onready var fps = $"../../UI/Label"
+var fps_on = false
+var shoot = false
+var ammo = 0
+var max_ammo = 30
+@onready var ammo_show = $"../../UI/Label2"
+
 func _ready():
+	$AudioStreamPlayer3D2.stream = load("res://sounds/reload.mp3")
+	audio_player.stream = load("res://sounds/pew_pew.mp3")
+	fps.visible = false
 	randomize()
 	healthbar.init_health(health)
 
@@ -61,11 +72,13 @@ func _unhandled_input(event: InputEvent) -> void:
 		cameraV = true
 		mr = P
 		camera.rotation.x = 0
+		$"../../UI/Reticle".visible = false
 	elif event.is_action_pressed("camera") and cameraV:
 		cameraV = false
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		TopDownCamera.clear_current()
 		camera.make_current()
+		$"../../UI/Reticle".visible = true
 	
 	
 	if event is InputEventMouseButton and !cameraV:
@@ -80,6 +93,23 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func _physics_process(delta: float) -> void:
+	if Input.is_action_just_pressed("Reload"):
+		shoot = false
+		$AnimationPlayer.play("reload")
+		$AudioStreamPlayer3D2.play()
+		await get_tree().create_timer(0.62).timeout
+		shoot = true
+		ammo = max_ammo
+	
+	ammo_show.text = str(ammo) + " / ∞"
+	fps.text = str(Engine.get_frames_per_second()) + " FPS"
+	if Input.is_action_just_pressed("FPS") and !fps_on:
+		fps.visible = true
+		fps_on = true
+	elif Input.is_action_just_pressed("FPS") and fps_on:
+		fps.visible = false
+		fps_on = false
+	
 	var directionP = mouse_position - rot.global_position
 	directionP.y = 0
 	var angle = atan2(-directionP.x, -directionP.z)
@@ -125,6 +155,8 @@ func _physics_process(delta: float) -> void:
 		$FireTimer.stop()
 		gun_anim.play("RESET")
 		gun_anim2.play("RESET")
+		await get_tree().create_timer(0.067).timeout
+		audio_player.stop()
 	t_bob += delta * velocity.length() * float(is_on_floor())
 	camera.transform.origin = _headbob(t_bob)
 	
@@ -139,67 +171,67 @@ func _physics_process(delta: float) -> void:
 		
 	else:
 		spread = s
-		
-	if Input.is_key_label_pressed(KEY_G):
-		health += 1
-		healthbar.health = health
-	
 	
 	move_and_slide()
 
 
 func _on_fire_timer_timeout() -> void:
-	var from = camera.global_position
-	var to = from + -camera.global_transform.basis.z * 1000.0
+	if !shoot or ammo <= 0:
+		audio_player.stop()
+	if shoot and ammo > 0:
+		audio_player.play()
+		ammo -= 1
+		var from = camera.global_position
+		var to = from + -camera.global_transform.basis.z * 1000.0
 
-	var space = get_world_3d().direct_space_state
-	var query = PhysicsRayQueryParameters3D.create(from, to)
-	query.exclude = [self]
+		var space = get_world_3d().direct_space_state
+		var query = PhysicsRayQueryParameters3D.create(from, to)
+		query.exclude = [self]
 
-	var result = space.intersect_ray(query)
-	var target = to
-	
-	if !result.is_empty():
-		target = result.position
-	else:
-		target = from + -camera.global_transform.basis.z * 35.0
-	
-	var camera_basis = camera.global_basis
-	var random_right = randf_range(-spread, spread)
-	var random_up = randf_range(-spread, spread)
-	var right = camera.global_transform.basis.x
-	var up = camera.global_transform.basis.y
-	var target1 = target + right * (right_offset + random_right) + up * random_up
-	var target2 = target + right * (left_offset + random_up) + up * random_right
-	
-	var target_basis1 = Basis.looking_at((target1 - gun_ray_cast.global_position).normalized())
-	var target_basis2 = Basis.looking_at((target2 - gun_ray_cast2.global_position).normalized())
-		#var target_basis1 = Basis.looking_at((target - gun_ray_cast.global_position).normalized())
-		#var target_basis2 = Basis.looking_at((target - gun_ray_cast2.global_position).normalized())
-	if !result.is_empty():
-		var distance = from.distance_to(target)
-		var weight = clamp((distance - aim_assist_start) / (aim_assist_end - aim_assist_start), 0.0, 1.0)
-		gun_ray_cast.global_basis = camera_basis.slerp(target_basis1, weight)
-		gun_ray_cast2.global_basis = camera_basis.slerp(target_basis2, weight)
-	else:
-		gun_ray_cast.global_basis = target_basis1
-		gun_ray_cast2.global_basis = target_basis2
-	
-	
-	
-	gun_anim.play("shoot")
-	gun_anim2.play("shoot")
-	instance = bullet.instantiate()
-	instance2 = bullet.instantiate()
-	instance.position = gun_ray_cast.global_position
-	instance2.position = gun_ray_cast2.global_position
-	
-	
-	
-	instance.transform.basis = gun_ray_cast.global_transform.basis
-	instance2.transform.basis = gun_ray_cast2.global_transform.basis
-	get_parent().add_child(instance)
-	get_parent().add_child(instance2)
+		var result = space.intersect_ray(query)
+		var target = to
+		
+		if !result.is_empty():
+			target = result.position
+		else:
+			target = from + -camera.global_transform.basis.z * 35.0
+		
+		var camera_basis = camera.global_basis
+		var random_right = randf_range(-spread, spread)
+		var random_up = randf_range(-spread, spread)
+		var right = camera.global_transform.basis.x
+		var up = camera.global_transform.basis.y
+		var target1 = target + right * (right_offset + random_right) + up * random_up
+		var target2 = target + right * (left_offset + random_up) + up * random_right
+		
+		var target_basis1 = Basis.looking_at((target1 - gun_ray_cast.global_position).normalized())
+		var target_basis2 = Basis.looking_at((target2 - gun_ray_cast2.global_position).normalized())
+			#var target_basis1 = Basis.looking_at((target - gun_ray_cast.global_position).normalized())
+			#var target_basis2 = Basis.looking_at((target - gun_ray_cast2.global_position).normalized())
+		if !result.is_empty():
+			var distance = from.distance_to(target)
+			var weight = clamp((distance - aim_assist_start) / (aim_assist_end - aim_assist_start), 0.0, 1.0)
+			gun_ray_cast.global_basis = camera_basis.slerp(target_basis1, weight)
+			gun_ray_cast2.global_basis = camera_basis.slerp(target_basis2, weight)
+		else:
+			gun_ray_cast.global_basis = target_basis1
+			gun_ray_cast2.global_basis = target_basis2
+		
+		
+		
+		gun_anim.play("shoot")
+		gun_anim2.play("shoot")
+		instance = bullet.instantiate()
+		instance2 = bullet.instantiate()
+		instance.position = gun_ray_cast.global_position
+		instance2.position = gun_ray_cast2.global_position
+		
+		
+		
+		instance.transform.basis = gun_ray_cast.global_transform.basis
+		instance2.transform.basis = gun_ray_cast2.global_transform.basis
+		get_parent().add_child(instance)
+		get_parent().add_child(instance2)
 
 
 func _headbob(time) -> Vector3:

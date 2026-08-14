@@ -1,0 +1,371 @@
+[gd_scene format=3 uid="uid://ffawv3kknstu"]
+
+[ext_resource type="Script" uid="uid://dopxbtq8t2bfj" path="res://Scripts/main_menu.gd" id="1_8saeu"]
+[ext_resource type="Texture2D" uid="uid://c2i04k6bn1wpl" path="res://Scenes/Screenshot (795).png" id="1_tt5f1"]
+[ext_resource type="FontFile" uid="uid://rpmeiekcp4jx" path="res://BONEAPA.TTF" id="2_853f1"]
+[ext_resource type="Texture2D" uid="uid://bins7ir0xbiwh" path="res://sounds/Untitled1.png" id="4_df05h"]
+[ext_resource type="AudioStream" uid="uid://qtqu743gh0uv" path="res://sounds/shadowsandechoes-deep-core-loop-version-325061.mp3" id="4_ghw46"]
+[ext_resource type="Script" uid="uid://bkq3l1kfscd8v" path="res://Scripts/Graphics_option.gd" id="5_8um5k"]
+[ext_resource type="Script" uid="uid://dkgnovdxf4h0h" path="res://Scripts/max_fps.gd" id="6_xim88"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bnhvo"]
+texture = ExtResource("1_tt5f1")
+modulate_color = Color(0.39453125, 0.39453125, 0.39453125, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_853f1"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0, 0, 0, 0.40392157)
+shadow_size = 5
+shadow_offset = Vector2(0, 2.865)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8saeu"]
+bg_color = Color(0.1875, 0.1875, 0.1875, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0, 0, 0, 0.40392157)
+shadow_size = 5
+shadow_offset = Vector2(0, 2.865)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ghw46"]
+bg_color = Color(0.66015625, 0.66015625, 0.66015625, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0, 0, 0, 0.40392157)
+shadow_size = 5
+shadow_offset = Vector2(0, 2.865)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_hn8rt"]
+color = Color(1, 1, 1, 1)
+thickness = 6
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_0idsm"]
+color = Color(0, 0.055037975, 1, 1)
+thickness = 6
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_ghw46"]
+color = Color(0, 0.029166602, 0.53125, 1)
+thickness = 6
+
+[node name="MainMenu" type="Control" unique_id=641874289]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8saeu")
+
+[node name="Panel" type="Panel" parent="." unique_id=231373466]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_bnhvo")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1795536572]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -189.0
+offset_top = -13.0
+offset_right = 189.0
+offset_bottom = 231.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 8
+
+[node name="Button" type="Button" parent="VBoxContainer" unique_id=591008943]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_853f1")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_853f1")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_8saeu")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ghw46")
+text = "start game"
+
+[node name="Button2" type="Button" parent="VBoxContainer" unique_id=461091748]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_853f1")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_853f1")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_8saeu")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ghw46")
+text = "settings"
+
+[node name="Button3" type="Button" parent="VBoxContainer" unique_id=1538701324]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_853f1")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_853f1")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_8saeu")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ghw46")
+text = "exit"
+
+[node name="Label" type="Label" parent="." unique_id=1263302377]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -334.0
+offset_top = -252.0
+offset_right = 334.0
+offset_bottom = -142.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 10
+theme_override_fonts/font = ExtResource("2_853f1")
+theme_override_font_sizes/font_size = 80
+text = "game of B?NES"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=405387653]
+
+[node name="options" type="Panel" parent="." unique_id=1974604759]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -204.0
+offset_top = -68.0
+offset_right = 204.0
+offset_bottom = 255.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="options" unique_id=1037239212]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 53.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 32
+text = "Options"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="options" unique_id=379447733]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -39.0
+offset_bottom = 36.0
+grow_horizontal = 0
+text = "x"
+
+[node name="Label2" type="Label" parent="options" unique_id=637277243]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -36.0
+offset_top = 55.0
+offset_right = 36.0
+offset_bottom = 92.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 24
+text = "music"
+
+[node name="HSlider" type="HSlider" parent="options/Label2" unique_id=789184432]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -189.0
+offset_top = 36.5
+offset_right = 75.5
+offset_bottom = 73.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/slider = SubResource("StyleBoxLine_hn8rt")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_0idsm")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_ghw46")
+value = 60.0
+
+[node name="Label" type="Label" parent="options/Label2/HSlider" unique_id=1280002496]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = -13.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "volume"
+horizontal_alignment = 1
+
+[node name="ItemList" type="ItemList" parent="options/Label2" unique_id=190359840]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 91.0
+offset_top = 22.5
+offset_right = 182.0
+offset_bottom = 90.5
+grow_horizontal = 2
+grow_vertical = 2
+item_count = 2
+item_0/text = "Music1"
+item_1/text = "Music2"
+
+[node name="Button" type="Button" parent="options/Label2" unique_id=901279920]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -189.0
+offset_top = -37.5
+offset_right = -117.0
+offset_bottom = 34.5
+grow_horizontal = 2
+grow_vertical = 2
+icon = ExtResource("4_df05h")
+
+[node name="CheckButton" type="CheckButton" parent="options" unique_id=346930202]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 164.0
+offset_right = 142.0
+offset_bottom = 195.0
+text = "Fullscreen"
+
+[node name="show_fps" type="CheckButton" parent="options" unique_id=617285916]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 187.0
+offset_right = 142.0
+offset_bottom = 218.0
+text = "Show FPS"
+
+[node name="OptionButton" type="OptionButton" parent="options" unique_id=971990361]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -189.0
+offset_top = 59.5
+offset_right = -40.0
+offset_bottom = 90.5
+grow_horizontal = 2
+grow_vertical = 2
+selected = 1
+item_count = 5
+popup/item_0/text = "Ultra"
+popup/item_0/id = 0
+popup/item_1/text = "High"
+popup/item_1/id = 1
+popup/item_2/text = "Medium"
+popup/item_2/id = 2
+popup/item_3/text = "Low"
+popup/item_3/id = 3
+popup/item_4/text = "Potato"
+popup/item_4/id = 4
+script = ExtResource("5_8um5k")
+
+[node name="max_fps" type="SpinBox" parent="options" unique_id=1395344925]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 95.0
+offset_top = 25.5
+offset_right = 181.5
+offset_bottom = 56.5
+grow_horizontal = 2
+grow_vertical = 2
+max_value = 240.0
+value = 60.0
+script = ExtResource("6_xim88")
+
+[node name="Label" type="Label" parent="options/max_fps" unique_id=674274695]
+layout_mode = 0
+offset_top = -23.0
+offset_right = 67.0
+text = "MAX FPS"
+
+[node name="VSync" type="CheckBox" parent="options" unique_id=1998429161]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 95.0
+offset_top = 59.5
+offset_right = 169.0
+offset_bottom = 90.5
+grow_horizontal = 2
+grow_vertical = 2
+button_pressed = true
+text = "VSync"
+
+[node name="BGMusic" type="AudioStreamPlayer2D" parent="." unique_id=941728484]
+stream = ExtResource("4_ghw46")
+autoplay = true
+parameters/looping = true
+
+[node name="Label2" type="Label" parent="." unique_id=1099715489]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[connection signal="mouse_entered" from="VBoxContainer/Button" to="." method="_on_button_mouse_entered"]
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_start_pressed"]
+[connection signal="mouse_entered" from="VBoxContainer/Button2" to="." method="_on_button_2_mouse_entered"]
+[connection signal="pressed" from="VBoxContainer/Button2" to="." method="_on_settings_pressed"]
+[connection signal="mouse_entered" from="VBoxContainer/Button3" to="." method="_on_button_3_mouse_entered"]
+[connection signal="pressed" from="VBoxContainer/Button3" to="." method="_on_exti_pressed"]
+[connection signal="pressed" from="options/Button" to="." method="_on_x_pressed"]
+[connection signal="value_changed" from="options/Label2/HSlider" to="." method="_on_h_slider_value_changed"]
+[connection signal="item_selected" from="options/Label2/ItemList" to="." method="_on_item_list_item_selected"]
+[connection signal="pressed" from="options/Label2/Button" to="." method="_on_mute_pressed"]
+[connection signal="toggled" from="options/CheckButton" to="." method="_on_check_button_toggled"]
+[connection signal="toggled" from="options/show_fps" to="." method="_on_show_fps_toggled"]
+[connection signal="item_selected" from="options/OptionButton" to="options/OptionButton" method="_on_item_selected"]
+[connection signal="value_changed" from="options/max_fps" to="options/max_fps" method="_on_value_changed"]
+[connection signal="toggled" from="options/VSync" to="." method="_on_v_sync_toggled"]
