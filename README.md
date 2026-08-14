@@ -4,9 +4,10 @@ A 3D shooter game with first person view and top down view.
 It's zombie shooter, and the player have 2 guns to kill zombies and ghosts.
 
 ## How this was made
-I think it's obvious that it was made with godot and gdscript.
+I think it's obvious that it was made with Godot and GDScript, also I almost forget my bro "Blender".
+Blender was used to convert animations formats to gltf
 
-## development steps
+### Things I implemented
 1-Firstly, making player, movements, camera, and camera shaking
 
 2-Adding guns and shooting mechanics (bullets, damage, and collisions)
